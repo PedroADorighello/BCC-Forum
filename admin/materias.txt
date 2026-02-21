@@ -1,0 +1,19 @@
+Algoritmos e Estruturas de Dados & Obrigatória
+Programação Orientada a Objetos & Obrigatória
+Cálculo Numérico & Obrigatória
+Banco de Dados & Obrigatória
+Engenharia de Software & Obrigatória
+Redes de Computadores & Obrigatória
+Sistemas Operacionais & Obrigatória
+Teoria da Computação & Obrigatória
+Organização e Arquitetura de Computadores & Obrigatória
+Inteligência Artificial & Obrigatória
+Aprendizado de Máquina & Optativa 1
+Visão Computacional & Optativa 1
+Desenvolvimento de Aplicações Móveis & Optativa 1
+Mineração de Dados & Optativa 1
+Sistemas Distribuídos & Optativa 1
+Gestão Ambiental & Optativa 2
+Empreendedorismo em Informática & Optativa 2
+Língua Brasileira de Sinais (Libras) & Optativa 2
+Ética e Legislação em Computação & Optativa 2

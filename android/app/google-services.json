@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "47576396604",
+    "project_id": "forum-2f5bd",
+    "storage_bucket": "forum-2f5bd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:47576396604:android:a3cfa4b8a4172c5c06e439",
+        "android_client_info": {
+          "package_name": "com.example.forum"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlCJlTPb-7okd3GNbQV1uOytbEhcMBpRk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
