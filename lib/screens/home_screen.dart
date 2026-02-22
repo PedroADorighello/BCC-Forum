@@ -182,7 +182,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Padding(
                       padding: EdgeInsets.only(
                         right: 16.0,
-                        bottom: larguraTela < 600 ? 6.0 : 0,
+                        bottom: larguraTela < 600 ? 4.0 : 0,
                       ),
                       child: FilterChip(
                         label: const Text('Minhas Avaliações'),
@@ -212,7 +212,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         return Padding(
                           padding: EdgeInsets.only(
                             right: 8.0,
-                            bottom: larguraTela < 600 ? 6.0 : 0,
+                            bottom: larguraTela < 600 ? 4.0 : 0,
                           ),
                           child: ChoiceChip(
                             label: Text(categoria),
@@ -390,7 +390,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                         ),
                                       ),
-                                      const SizedBox(height: 8),
+                                      SizedBox(height: 4.0),
                                       Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
