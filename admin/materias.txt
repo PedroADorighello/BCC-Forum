@@ -1,100 +1,109 @@
-Circuitos Digitais & Obrigatória
+Circuitos Digitais - CD & Obrigatória
 Geometria Analítica e Álgebra Linear & Obrigatória
 Introdução à Programação & Obrigatória
 Laboratório de Circuitos Digitais & Obrigatória
 Laboratório de Programação & Obrigatória
 Lógica Matemática & Obrigatória
-Arquitetura e Organização de Computadores & Obrigatória
-Cálculo Diferencial e Integral 1 & Obrigatória
-Estruturas de Dados & Obrigatória
-Física Geral 1 & Obrigatória
-Matemática Discreta & Obrigatória
-Cálculo Diferencial e Integral 2 & Obrigatória
-Estruturas de Dados Avançadas & Obrigatória
-Introdução à Engenharia de Software & Obrigatória
-Programação Orientada a Objetos & Obrigatória
-Sistemas Operacionais & Obrigatória
-Banco de Dados & Obrigatória
-Engenharia de Software & Obrigatória
-Informática, Ética e Sociedade & Obrigatória
-Organização e Recuperação da Informação & Obrigatória
-Probabilidade e Estatística & Obrigatória
-Redes de Computadores & Obrigatória
-Inteligência Artificial & Obrigatória
-Processamento Gráfico & Obrigatória
-Teoria da Computação & Obrigatória
-Linguagens de Programação & Obrigatória
-Projeto e Análise de Algoritmos & Obrigatória
-Compiladores & Obrigatória
-Pesquisa Acadêmica em Computação & Obrigatória
-Atividades de Conclusão de Curso & Obrigatória
-Seminários de Computação & Obrigatória
-Física 1 Teórico Experimental & Optativa 1
-Física Geral 3 & Optativa 1
-Empreendedorismo & Optativa 1
-E-science & Optativa 1
-Libras & Optativa 1
-Sustentabilidade em Computação & Optativa 1
-Fundamentos de Ensino do Pensamento Computacional & Optativa 1
-Algoritmos em Grafos & Optativa 1
-Laboratório de Arquitetura de Computadores & Optativa 1
-Laboratório de Sistemas Operacionais & Optativa 1
-Pesquisa Operacional I & Optativa 1
-Pesquisa Operacional II & Optativa 1
-Teoria dos Grafos & Optativa 1
-Cálculo Numérico & Optativa 1
-Algoritmos Distribuídos & Optativa 1
-Análise de Agrupamento & Optativa 1
-Aprendizado de Máquina & Optativa 1
-Avaliação Experimental em Projetos de Software & Optativa 1
-Computação em GPU & Optativa 1
-Computação Gráfica & Optativa 1
-Computação Paralela & Optativa 1
-Desenvolvimento Web & Optativa 1
-Gestão de Projetos e Qualidade de Software & Optativa 1
-Interação Humano-Computador & Optativa 1
-Introdução a Criptografia & Optativa 1
-Laboratório de Redes de Computadores & Optativa 1
-Laboratório de Compiladores & Optativa 1
-Multimídia Computacional & Optativa 1
-Novas Tecnologias em Banco de Dados & Optativa 1
-Processamento de Imagens & Optativa 1
-Processamento de Linguagem Natural & Optativa 1
-Processamento Massivo de Dados & Optativa 1
-Projeto e Desenvolvimento de Sistemas & Optativa 1
-Robótica & Optativa 1
-Segurança de Redes & Optativa 1
-Segurança e Auditoria de Sistemas & Optativa 1
-Sistemas de Banco de Dados & Optativa 1
-Sistemas Distribuídos & Optativa 1
-Tópicos Avançados em Arquitetura de Computadores & Optativa 1
-Tópicos Avançados em Banco Dados & Optativa 1
-Tópicos Avançados em Ciência da Computação & Optativa 1
-Tópicos Avançados em Engenharia de Software & Optativa 1
-Tópicos Avançados em Linguagens de Programação & Optativa 1
-Tópicos Avançados em Redes de Computadores e Sistemas Distribuídos & Optativa 1
-Tópicos Avançados em Sistemas Operacionais & Optativa 1
-Tópicos Avançados em Teoria da Computação & Optativa 1
-Visão Computacional & Optativa 1
-Tópicos Avançados em IAl & Optativa 1
-Tópicos Avançados em Processamento Gráfico & Optativa 1
+Projeto Hackoonspace 1 & Optativa 1
+Projeto Hackoonspace 2 & Optativa 1
 Análise de Decisão & Optativa 2
+Arquitetura e Organização de Computadores & Obrigatória
 Automação de Cadeias de Produção & Optativa 2
+Cálculo Diferencial e Integral 1 & Obrigatória
 Comportamento do Consumidor e Pesquisa de Marketing & Optativa 2
 Comportamento Organizacional & Optativa 2
 Contabilidade Básica & Optativa 2
 Desenho Técnico & Optativa 2
 Diversidade e Identidade Cultural na Sociedade Brasileira & Optativa 2
 Energia e Instalações Elétricas & Optativa 2
-Estratégia e Governança de TI & Optativa 2
-Filosofia e Ética Empresarial & Optativa 2
+Estruturas de Dados & Obrigatória
+Física Geral 1 & Obrigatória
+Fundamentos de Ensino do Pensamento Computacional & Optativa 1
 Gerenciamento de Projetos & Optativa 2
 Gestão de Pequenas Empresas & Optativa 2
 Gestão de Projetos & Optativa 2
-Gestão Por Processos & Optativa 2
+Gestão por Processos & Optativa 2
 Introdução à Economia & Optativa 2
+Introdução à Língua Brasileira de Sinais - Libras - para Bacharelado & Optativa 1
 Introdução ao Marketing & Optativa 2
+Introdução à Teoria dos Grafos & Optativa 1
+Laboratório de Arquitetura de Computadores & Optativa 1
 Marketing & Optativa 2
+Matemática Discreta - MD & Obrigatória
 Matemática Financeira & Optativa 2
 Noções Básicas de Economia & Optativa 2
 Noções de Gestão Ambiental & Optativa 2
+Cálculo Diferencial e Integral 2 & Obrigatória
+Empreendedorismo & Optativa 1
+Estruturas de Dados Avançadas & Obrigatória
+Filosofia e Ética Empresarial & Optativa 2
+Física 1 Teórico Experimental & Optativa 1
+Física Geral 3 & Optativa 1
+Introdução à Criptografia & Optativa 1
+Introdução à Engenharia de Software & Obrigatória
+Laboratório de Sistemas Operacionais & Optativa 1
+Pesquisa Operacional 1 & Optativa 1
+Processamento de Imagens & Optativa 1
+Programação Orientada a Objetos & Obrigatória
+Sistemas Operacionais - SO & Obrigatória
+Técnicas para a Construção de Software & Optativa 1
+Tópicos Avançados em Arquitetura de Computadores & Optativa 1
+Tópicos Avançados em Ciência da Computação & Optativa 1
+Tópicos Avançados em Ciência da Computação 2 & Optativa 1
+Tópicos Avançados em Ciência da Computação 3 & Optativa 1
+Tópicos Avançados em Ciência da Computação 4 & Optativa 1
+Tópicos Avançados em Teoria da Computação & Optativa 1
+Bancos de Dados & Obrigatória
+Computação Paralela & Optativa 1
+Engenharia de Software & Obrigatória
+Informática, Ética e Sociedade - IES & Obrigatória
+Organização e Recuperação da Informação & Obrigatória
+Pesquisa Operacional 2 & Optativa 1
+Probabilidade e Estatística & Obrigatória
+Processamento Massivo de Dados & Optativa 1
+Redes de Computadores & Obrigatória
+Robótica & Optativa 1
+Tópicos Avançados em Sistemas Operacionais & Optativa 1
+Algoritmos Distribuídos & Optativa 1
+Análise de Agrupamento & Optativa 1
+Avaliação Experimental em Projetos de Software & Optativa 1
+Desenvolvimento Web & Optativa 1
+Gestão de Projetos e Qualidade de Software & Optativa 1
+Inteligência Artificial & Obrigatória
+Interação Humano-Computador & Optativa 1
+Laboratório de Redes de Computadores & Optativa 1
+Novas Tecnologias em Banco de Dados & Optativa 1
+Processamento Gráfico & Obrigatória
+Projeto e Desenvolvimento de Sistemas & Optativa 1
+Segurança e Auditoria de Sistemas & Optativa 1
+Sistemas de Bancos de Dados & Optativa 1
+Sistemas Distribuídos & Optativa 1
+Teoria da Computação & Obrigatória
+Tópicos Avançados em Banco de Dados & Optativa 1
+Tópicos Avançados em Engenharia de Software & Optativa 1
+Tópicos Avançados em Redes de Computadores e Sistemas Distribuídos & Optativa 1
+Aprendizado de Máquina & Optativa 1
+Aprendizado Profundo para Reconhecimento Visual & Optativa 1
+Computação em GPU & Optativa 1
+Computação Gráfica & Optativa 1
+Desenvolvimento para Dispositivos Móveis & Optativa 1
+Linguagens de Programação & Obrigatória
+Multimídia Computacional & Optativa 1
+Processamento de Linguagem Natural & Optativa 1
+Projeto e Análise de Algoritmos & Obrigatória
+Sensoriamento Remoto & Optativa 1
+Tomada de Decisão em Contextos Complexos & Optativa 2
+Tópicos Avançados em Inteligência Artificial & Optativa 1
+Tópicos Avançados em Processamento Gráfico & Optativa 1
+Visão Computacional & Optativa 1
+Algoritmos em Grafos & Optativa 1
+Cálculo Numérico & Optativa 1
+Compiladores & Obrigatória
+E-Science & Optativa 1
+Programação Competitiva & Optativa 1
+Sustentabilidade em Computação & Optativa 1
+Teoria dos Grafos & Optativa 1
+Tópicos Avançados em Linguagens de Programação & Optativa 1
+Laboratório de Compiladores & Optativa 1
+Pesquisa Acadêmica em Computação & Obrigatória
+Seminários de Computação & Obrigatória
