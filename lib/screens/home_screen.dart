@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final FirebaseService firebaseService = FirebaseService();
 
   String _termoPesquisa = '';
-  String _criterioOrdenacao = 'Nome (A-Z)';
+  String _criterioOrdenacao = 'Mais Avaliadas';
   String _filtroCategoria = 'Todas';
 
   bool _mostrarApenasMinhas = false;
