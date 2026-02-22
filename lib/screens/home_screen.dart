@@ -321,6 +321,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             padding: const EdgeInsets.only(bottom: 16.0),
                             itemBuilder: (context, index) {
                               final materia = materiasFiltradas[index];
+                              double larguraTela = MediaQuery.of(context).size.width;
+                              double alturaTela = MediaQuery.of(context).size.height;
                               bool jaAvaliou = _minhasMateriasIds.contains(
                                 materia.id,
                               );
@@ -383,7 +385,63 @@ class _HomeScreenState extends State<HomeScreen> {
                                               ),
                                             ),
                                           ),
-                                          Text(
+                                          if (alturaTela > larguraTela)...[
+                                            
+                                            // Botão de Fórum/Comentários
+                                            Column(
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    IconButton(
+                                                      icon: const Icon(
+                                                        Icons.forum_outlined,
+                                                        color: Colors.grey,
+                                                      ),
+                                                      tooltip: 'Ver comentários',
+                                                      onPressed: () {
+                                                        showDialog(
+                                                          context: context,
+                                                          builder: (context) =>
+                                                              ListaComentariosDialog(
+                                                                materiaId: materia.id,
+                                                                nomeMateria: materia.nome,
+                                                              ),
+                                                        );
+                                                      },
+                                                    ),
+                                                    // Botão de Votar
+                                                    IconButton(
+                                                      icon: Icon(
+                                                        jaAvaliou
+                                                            ? Icons.how_to_vote
+                                                            : Icons.how_to_vote_outlined,
+                                                        color: jaAvaliou
+                                                            ? Colors.green
+                                                            : Colors.blue,
+                                                      ),
+                                                      tooltip: jaAvaliou
+                                                          ? 'Editar avaliação'
+                                                          : 'Avaliar disciplina',
+                                                      onPressed: () =>
+                                                          _verificarEAbrirVotacao(
+                                                            context,
+                                                            materia,
+                                                          ),
+                                                    ),
+                                                
+                                                  ],
+                                                  
+                                                ),
+                                                Text(
+                                                '${materia.votos} votos',
+                                                style: const TextStyle(
+                                                  color: Colors.grey,
+                                                ),
+                                            ),
+                                              ],
+                                            ),
+                                          ] else...[
+                                            Text(
                                             '${materia.votos} votos',
                                             style: const TextStyle(
                                               color: Colors.grey,
@@ -428,6 +486,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   materia,
                                                 ),
                                           ),
+                                          ]
+
+                                          
                                         ],
                                       ),
                                       const SizedBox(height: 12),

@@ -66,7 +66,7 @@ class _VotacaoDialogState extends State<VotacaoDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('Avaliar ${widget.materia.nome}'),
+      title: Text('Avaliar: ${widget.materia.nome}'),
       content: isLoadingAnterior
           ? const SizedBox(
               height: 100,
