@@ -48,7 +48,7 @@ try:
             print(f"\nO comentário na disciplina '{alvo['materia']}' foi apagado com sucesso!")
             print("As notas de dificuldade e qualidade do aluno foram mantidas.")
         else:
-            print("\nNenhuma ação realizada. A sair...")
+            print("\nNenhuma ação realizada. Saindo...")
 
 except Exception as e:
     print(f"\nErro ao procurar dados: {e}")
