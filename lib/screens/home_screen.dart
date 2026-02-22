@@ -67,8 +67,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     double larguraTela = MediaQuery.of(context).size.width;
-    double tamanhoTitulo = (larguraTela * 0.025).clamp(14.0, 22.0);
-    double tamanhoSubtitulo = (larguraTela * 0.015).clamp(12.0, 16.0);
+    double tamanhoTitulo = (larguraTela * 0.025).clamp(16.0, 22.0);
+    double tamanhoSubtitulo = (larguraTela * 0.015).clamp(14.0, 16.0);
     ScrollController scrollController2 = ScrollController();
     return Scaffold(
       appBar: AppBar(
@@ -550,8 +550,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildRatingInfo(String label, double rating, Color color) {
     double larguraTela = MediaQuery.of(context).size.width;
-    double tamanhoSubtitulo = (larguraTela * 0.015).clamp(12.0, 16.0);
-    double tamanhoLegenda = (larguraTela * 0.012).clamp(10.0, 14.0);
+    double tamanhoSubtitulo = (larguraTela * 0.015).clamp(14.0, 16.0);
+    double tamanhoLegenda = (larguraTela * 0.012).clamp(12.0, 14.0);
     return Column(
       children: [
         Text(label, style: TextStyle(fontSize: tamanhoSubtitulo)),
