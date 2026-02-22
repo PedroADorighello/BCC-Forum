@@ -107,6 +107,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 value: 'Mais Fáceis',
                 child: Text('Mais Fáceis'),
               ),
+              const PopupMenuItem(
+                value: 'Mais Avaliadas',
+                child: Text('Mais Avaliadas'),
+              ),
             ],
           ),
           StreamBuilder<User?>(
@@ -269,6 +273,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       if (a.votos == 0 && b.votos > 0) return 1;
                       if (b.votos == 0 && a.votos > 0) return -1;
                       return a.mediaDificuldade.compareTo(b.mediaDificuldade);
+                    case 'Mais Avaliadas':
+                      return b.votos.compareTo(a.votos);
                     case 'Nome (A-Z)':
                     default:
                       return a.nome.compareTo(b.nome);
@@ -284,7 +290,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // O Contador de Disciplinas
                     Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 16.0,
