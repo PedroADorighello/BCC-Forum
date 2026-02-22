@@ -55,36 +55,65 @@ class ListaComentariosDialog extends StatelessWidget {
                   title: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        children: [
-                          RatingBarIndicator(
-                            rating: (avaliacao['dificuldade'] ?? 0).toDouble(),
-                            itemBuilder: (context, _) =>
-                                const Icon(Icons.star, color: Colors.redAccent),
-                            itemCount: 5,
-                            itemSize: 14,
-                            direction: Axis.horizontal,
-                          ),
-                          const SizedBox(width: 8),
-                          const Text(
-                            'Dificuldade',
-                            style: TextStyle(fontSize: 12, color: Colors.grey),
-                          ),
-                          const SizedBox(width: 16),
-                          RatingBarIndicator(
-                            rating: (avaliacao['avaliacao'] ?? 0).toDouble(),
-                            itemBuilder: (context, _) =>
-                                const Icon(Icons.star, color: Colors.amber),
-                            itemCount: 5,
-                            itemSize: 14,
-                            direction: Axis.horizontal,
-                          ),
-                          const SizedBox(width: 8),
-                          const Text(
-                            'Qualidade',
-                            style: TextStyle(fontSize: 12, color: Colors.grey),
-                          ),
-                        ],
+                      LayoutBuilder(
+                        builder: (context, constraints) {
+                          final isMobile = constraints.maxWidth < 600;
+                          final children = [
+                            Row(
+                              children: [
+                                RatingBarIndicator(
+                                  rating: (avaliacao['dificuldade'] ?? 0)
+                                      .toDouble(),
+                                  itemBuilder: (context, _) => const Icon(
+                                    Icons.star,
+                                    color: Colors.redAccent,
+                                  ),
+                                  itemCount: 5,
+                                  itemSize: 14,
+                                  direction: Axis.horizontal,
+                                ),
+                                const SizedBox(width: 8),
+                                const Text(
+                                  'Dificuldade',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                                const SizedBox(width: 16),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                RatingBarIndicator(
+                                  rating: (avaliacao['avaliacao'] ?? 0)
+                                      .toDouble(),
+                                  itemBuilder: (context, _) => const Icon(
+                                    Icons.star,
+                                    color: Colors.amber,
+                                  ),
+                                  itemCount: 5,
+                                  itemSize: 14,
+                                  direction: Axis.horizontal,
+                                ),
+                                const SizedBox(width: 8),
+                                const Text(
+                                  'Qualidade',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ];
+                          return isMobile
+                              ? Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: children,
+                                )
+                              : Row(children: [...children]);
+                        },
                       ),
                       const SizedBox(height: 4),
                     ],
