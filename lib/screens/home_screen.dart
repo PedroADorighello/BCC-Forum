@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
     double larguraTela = MediaQuery.of(context).size.width;
     double tamanhoTitulo = (larguraTela * 0.025).clamp(14.0, 22.0);
     double tamanhoSubtitulo = (larguraTela * 0.015).clamp(12.0, 16.0);
-
+    ScrollController scrollController2 = ScrollController();
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -164,54 +164,72 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
 
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.symmetric(horizontal: 12.0),
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 16.0),
-                  child: FilterChip(
-                    label: const Text('Minhas Avaliações'),
-                    selected: _mostrarApenasMinhas,
-                    selectedColor: Colors.amber[200],
-                    checkmarkColor: Colors.black87,
-                    onSelected: (selecionado) {
-                      final user = FirebaseAuth.instance.currentUser;
-                      if (user == null) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text(
-                              'Faça login para ver suas avaliações.',
-                            ),
-                            backgroundColor: Colors.redAccent,
+          RawScrollbar(
+            controller: scrollController2,
+            thumbVisibility: true,
+            thumbColor: Colors.grey[300],
+            thickness: 3.0,
+            child: ScrollConfiguration(
+              behavior: ScrollConfiguration.of(
+                context,
+              ).copyWith(scrollbars: false),
+              child: SingleChildScrollView(
+                controller: scrollController2,
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(
+                        right: 16.0,
+                        bottom: larguraTela < 600 ? 6.0 : 0,
+                      ),
+                      child: FilterChip(
+                        label: const Text('Minhas Avaliações'),
+                        selected: _mostrarApenasMinhas,
+                        selectedColor: Colors.amber[200],
+                        checkmarkColor: Colors.black87,
+                        onSelected: (selecionado) {
+                          final user = FirebaseAuth.instance.currentUser;
+                          if (user == null) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text(
+                                  'Faça login para ver suas avaliações.',
+                                ),
+                                backgroundColor: Colors.redAccent,
+                              ),
+                            );
+                            return;
+                          }
+
+                          setState(() => _mostrarApenasMinhas = selecionado);
+                        },
+                      ),
+                    ),
+                    ...['Todas', 'Obrigatória', 'Optativa 1', 'Optativa 2'].map(
+                      (categoria) {
+                        return Padding(
+                          padding: EdgeInsets.only(
+                            right: 8.0,
+                            bottom: larguraTela < 600 ? 6.0 : 0,
+                          ),
+                          child: ChoiceChip(
+                            label: Text(categoria),
+                            selected: _filtroCategoria == categoria,
+                            onSelected: (selecionado) {
+                              if (selecionado) {
+                                setState(() => _filtroCategoria = categoria);
+                              }
+                            },
+                            selectedColor: Colors.blue[100],
                           ),
                         );
-                        return;
-                      }
-
-                      setState(() => _mostrarApenasMinhas = selecionado);
-                    },
-                  ),
-                ),
-                ...['Todas', 'Obrigatória', 'Optativa 1', 'Optativa 2'].map((
-                  categoria,
-                ) {
-                  return Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: ChoiceChip(
-                      label: Text(categoria),
-                      selected: _filtroCategoria == categoria,
-                      onSelected: (selecionado) {
-                        if (selecionado) {
-                          setState(() => _filtroCategoria = categoria);
-                        }
                       },
-                      selectedColor: Colors.blue[100],
                     ),
-                  );
-                }),
-              ],
+                  ],
+                ),
+              ),
             ),
           ),
           const SizedBox(height: 8),
@@ -312,7 +330,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: RawScrollbar(
                           controller: _scrollController,
                           thumbVisibility: true,
-                          thumbColor: Colors.grey[400],
+                          thumbColor: Colors.grey[350],
                           thickness: 8.0,
                           radius: const Radius.circular(8),
                           child: ListView.builder(
@@ -321,7 +339,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             padding: const EdgeInsets.only(bottom: 16.0),
                             itemBuilder: (context, index) {
                               final materia = materiasFiltradas[index];
-                              double larguraTela = MediaQuery.of(context).size.width;
+                              double larguraTela = MediaQuery.of(
+                                context,
+                              ).size.width;
                               bool jaAvaliou = _minhasMateriasIds.contains(
                                 materia.id,
                               );
@@ -384,8 +404,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               ),
                                             ),
                                           ),
-                                          if (larguraTela < 600)...[
-                                            
+                                          if (larguraTela < 600) ...[
                                             // Botão de Fórum/Comentários
                                             Column(
                                               children: [
@@ -396,14 +415,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                                         Icons.forum_outlined,
                                                         color: Colors.grey,
                                                       ),
-                                                      tooltip: 'Ver comentários',
+                                                      tooltip:
+                                                          'Ver comentários',
                                                       onPressed: () {
                                                         showDialog(
                                                           context: context,
                                                           builder: (context) =>
                                                               ListaComentariosDialog(
-                                                                materiaId: materia.id,
-                                                                nomeMateria: materia.nome,
+                                                                materiaId:
+                                                                    materia.id,
+                                                                nomeMateria:
+                                                                    materia
+                                                                        .nome,
                                                               ),
                                                         );
                                                       },
@@ -413,7 +436,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                       icon: Icon(
                                                         jaAvaliou
                                                             ? Icons.how_to_vote
-                                                            : Icons.how_to_vote_outlined,
+                                                            : Icons
+                                                                  .how_to_vote_outlined,
                                                         color: jaAvaliou
                                                             ? Colors.green
                                                             : Colors.blue,
@@ -427,67 +451,65 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             materia,
                                                           ),
                                                     ),
-                                                
                                                   ],
-                                                  
                                                 ),
                                                 Text(
-                                                '${materia.votos} votos',
-                                                style: const TextStyle(
-                                                  color: Colors.grey,
+                                                  '${materia.votos} votos',
+                                                  style: const TextStyle(
+                                                    color: Colors.grey,
+                                                  ),
                                                 ),
-                                            ),
                                               ],
                                             ),
-                                          ] else...[
+                                          ] else ...[
                                             Text(
-                                            '${materia.votos} votos',
-                                            style: const TextStyle(
-                                              color: Colors.grey,
+                                              '${materia.votos} votos',
+                                              style: const TextStyle(
+                                                color: Colors.grey,
+                                              ),
                                             ),
-                                          ),
 
-                                          // Botão de Fórum/Comentários
-                                          IconButton(
-                                            icon: const Icon(
-                                              Icons.forum_outlined,
-                                              color: Colors.grey,
+                                            // Botão de Fórum/Comentários
+                                            IconButton(
+                                              icon: const Icon(
+                                                Icons.forum_outlined,
+                                                color: Colors.grey,
+                                              ),
+                                              tooltip: 'Ver comentários',
+                                              onPressed: () {
+                                                showDialog(
+                                                  context: context,
+                                                  builder: (context) =>
+                                                      ListaComentariosDialog(
+                                                        materiaId: materia.id,
+                                                        nomeMateria:
+                                                            materia.nome,
+                                                      ),
+                                                );
+                                              },
                                             ),
-                                            tooltip: 'Ver comentários',
-                                            onPressed: () {
-                                              showDialog(
-                                                context: context,
-                                                builder: (context) =>
-                                                    ListaComentariosDialog(
-                                                      materiaId: materia.id,
-                                                      nomeMateria: materia.nome,
-                                                    ),
-                                              );
-                                            },
-                                          ),
 
-                                          // Botão de Votar
-                                          IconButton(
-                                            icon: Icon(
-                                              jaAvaliou
-                                                  ? Icons.how_to_vote
-                                                  : Icons.how_to_vote_outlined,
-                                              color: jaAvaliou
-                                                  ? Colors.green
-                                                  : Colors.blue,
+                                            // Botão de Votar
+                                            IconButton(
+                                              icon: Icon(
+                                                jaAvaliou
+                                                    ? Icons.how_to_vote
+                                                    : Icons
+                                                          .how_to_vote_outlined,
+                                                color: jaAvaliou
+                                                    ? Colors.green
+                                                    : Colors.blue,
+                                              ),
+                                              tooltip: jaAvaliou
+                                                  ? 'Editar avaliação'
+                                                  : 'Avaliar disciplina',
+                                              onPressed: () =>
+                                                  _verificarEAbrirVotacao(
+                                                    context,
+                                                    materia,
+                                                  ),
                                             ),
-                                            tooltip: jaAvaliou
-                                                ? 'Editar avaliação'
-                                                : 'Avaliar disciplina',
-                                            onPressed: () =>
-                                                _verificarEAbrirVotacao(
-                                                  context,
-                                                  materia,
-                                                ),
-                                          ),
-                                          ]
-
-                                          
+                                          ],
                                         ],
                                       ),
                                       const SizedBox(height: 12),
