@@ -322,7 +322,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             itemBuilder: (context, index) {
                               final materia = materiasFiltradas[index];
                               double larguraTela = MediaQuery.of(context).size.width;
-                              double alturaTela = MediaQuery.of(context).size.height;
                               bool jaAvaliou = _minhasMateriasIds.contains(
                                 materia.id,
                               );
@@ -385,7 +384,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               ),
                                             ),
                                           ),
-                                          if (alturaTela > larguraTela)...[
+                                          if (larguraTela < 600)...[
                                             
                                             // Botão de Fórum/Comentários
                                             Column(
