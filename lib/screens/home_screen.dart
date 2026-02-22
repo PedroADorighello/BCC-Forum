@@ -27,6 +27,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   StreamSubscription<User?>? _authSubscription;
 
+  final ScrollController _scrollController = ScrollController();
+
   @override
   void initState() {
     super.initState();
@@ -42,6 +44,13 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    _authSubscription?.cancel();
+    super.dispose();
+  }
+
   Future<void> _carregarMinhasAvaliacoes(String uid) async {
     try {
       final ids = await firebaseService.obterMateriasAvaliadasPeloUsuario(uid);
@@ -53,12 +62,6 @@ class _HomeScreenState extends State<HomeScreen> {
     } catch (e) {
       print('Erro ao carregar avaliações em segundo plano: $e');
     }
-  }
-
-  @override
-  void dispose() {
-    _authSubscription?.cancel();
-    super.dispose();
   }
 
   @override
@@ -278,125 +281,177 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 }
 
-                return ListView.builder(
-                  itemCount: materiasFiltradas.length,
-                  padding: const EdgeInsets.only(bottom: 16.0),
-                  itemBuilder: (context, index) {
-                    final materia = materiasFiltradas[index];
-                    bool jaAvaliou = _minhasMateriasIds.contains(materia.id);
-                    return Card(
-                      elevation: 2,
-                      margin: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 6,
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // O Contador de Disciplinas
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0,
+                        vertical: 4.0,
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8,
-                                vertical: 4,
-                              ),
-                              decoration: BoxDecoration(
-                                color: materia.categoria == 'Obrigatória'
-                                    ? Colors.blue[50]
-                                    : materia.categoria == 'Optativa 2'
-                                    ? Colors.orange[50]
-                                    : Colors.green[50],
-                                borderRadius: BorderRadius.circular(4),
-                              ),
-                              child: Text(
-                                materia.categoria,
-                                style: TextStyle(
-                                  fontSize: tamanhoSubtitulo,
-                                  color: materia.categoria == 'Obrigatória'
-                                      ? Colors.blue[800]
-                                      : materia.categoria == 'Optativa 2'
-                                      ? Colors.orange[800]
-                                      : Colors.green[800],
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 8),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    materia.nome,
-                                    style: TextStyle(
-                                      fontSize: tamanhoTitulo,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  '${materia.votos} votos',
-                                  style: const TextStyle(color: Colors.grey),
-                                ),
-
-                                // Botão de Fórum/Comentários
-                                IconButton(
-                                  icon: const Icon(
-                                    Icons.forum_outlined,
-                                    color: Colors.grey,
-                                  ),
-                                  tooltip: 'Ver comentários',
-                                  onPressed: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (context) =>
-                                          ListaComentariosDialog(
-                                            materiaId: materia.id,
-                                            nomeMateria: materia.nome,
-                                          ),
-                                    );
-                                  },
-                                ),
-
-                                // Botão de Votar
-                                IconButton(
-                                  icon: Icon(
-                                    jaAvaliou
-                                        ? Icons.how_to_vote
-                                        : Icons.how_to_vote_outlined,
-                                    color: jaAvaliou
-                                        ? Colors.green
-                                        : Colors.blue,
-                                  ),
-                                  tooltip: jaAvaliou
-                                      ? 'Editar avaliação'
-                                      : 'Avaliar disciplina',
-                                  onPressed: () =>
-                                      _verificarEAbrirVotacao(context, materia),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 12),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                _buildRatingInfo(
-                                  'Dificuldade',
-                                  materia.mediaDificuldade,
-                                  Colors.redAccent,
-                                ),
-                                _buildRatingInfo(
-                                  'Qualidade',
-                                  materia.mediaAvaliacao,
-                                  Colors.amber,
-                                ),
-                              ],
-                            ),
-                          ],
+                      child: Text(
+                        'Exibindo ${materiasFiltradas.length} disciplina(s)',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey[700],
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
-                    );
-                  },
+                    ),
+                    ScrollConfiguration(
+                      behavior: ScrollConfiguration.of(
+                        context,
+                      ).copyWith(scrollbars: false),
+                      child: Expanded(
+                        child: RawScrollbar(
+                          controller: _scrollController,
+                          thumbVisibility: true,
+                          thumbColor: Colors.grey[400],
+                          thickness: 8.0,
+                          radius: const Radius.circular(8),
+                          child: ListView.builder(
+                            itemCount: materiasFiltradas.length,
+                            controller: _scrollController,
+                            padding: const EdgeInsets.only(bottom: 16.0),
+                            itemBuilder: (context, index) {
+                              final materia = materiasFiltradas[index];
+                              bool jaAvaliou = _minhasMateriasIds.contains(
+                                materia.id,
+                              );
+                              return Card(
+                                elevation: 2,
+                                margin: const EdgeInsets.symmetric(
+                                  horizontal: 12,
+                                  vertical: 6,
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 8,
+                                          vertical: 4,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color:
+                                              materia.categoria == 'Obrigatória'
+                                              ? Colors.blue[50]
+                                              : materia.categoria ==
+                                                    'Optativa 2'
+                                              ? Colors.orange[50]
+                                              : Colors.green[50],
+                                          borderRadius: BorderRadius.circular(
+                                            4,
+                                          ),
+                                        ),
+                                        child: Text(
+                                          materia.categoria,
+                                          style: TextStyle(
+                                            fontSize: tamanhoSubtitulo,
+                                            color:
+                                                materia.categoria ==
+                                                    'Obrigatória'
+                                                ? Colors.blue[800]
+                                                : materia.categoria ==
+                                                      'Optativa 2'
+                                                ? Colors.orange[800]
+                                                : Colors.green[800],
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(height: 8),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Expanded(
+                                            child: Text(
+                                              materia.nome,
+                                              style: TextStyle(
+                                                fontSize: tamanhoTitulo,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ),
+                                          Text(
+                                            '${materia.votos} votos',
+                                            style: const TextStyle(
+                                              color: Colors.grey,
+                                            ),
+                                          ),
+
+                                          // Botão de Fórum/Comentários
+                                          IconButton(
+                                            icon: const Icon(
+                                              Icons.forum_outlined,
+                                              color: Colors.grey,
+                                            ),
+                                            tooltip: 'Ver comentários',
+                                            onPressed: () {
+                                              showDialog(
+                                                context: context,
+                                                builder: (context) =>
+                                                    ListaComentariosDialog(
+                                                      materiaId: materia.id,
+                                                      nomeMateria: materia.nome,
+                                                    ),
+                                              );
+                                            },
+                                          ),
+
+                                          // Botão de Votar
+                                          IconButton(
+                                            icon: Icon(
+                                              jaAvaliou
+                                                  ? Icons.how_to_vote
+                                                  : Icons.how_to_vote_outlined,
+                                              color: jaAvaliou
+                                                  ? Colors.green
+                                                  : Colors.blue,
+                                            ),
+                                            tooltip: jaAvaliou
+                                                ? 'Editar avaliação'
+                                                : 'Avaliar disciplina',
+                                            onPressed: () =>
+                                                _verificarEAbrirVotacao(
+                                                  context,
+                                                  materia,
+                                                ),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 12),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          _buildRatingInfo(
+                                            'Dificuldade',
+                                            materia.mediaDificuldade,
+                                            Colors.redAccent,
+                                          ),
+                                          _buildRatingInfo(
+                                            'Qualidade',
+                                            materia.mediaAvaliacao,
+                                            Colors.amber,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 );
               },
             ),
