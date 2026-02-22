@@ -65,8 +65,12 @@ class _VotacaoDialogState extends State<VotacaoDialog> {
 
   @override
   Widget build(BuildContext context) {
+    final larguraTela = MediaQuery.of(context).size.width;
     return AlertDialog(
-      title: Text('Avaliar: ${widget.materia.nome}'),
+      title: Text(
+        'Avaliar: ${widget.materia.nome}',
+        style: TextStyle(fontSize: (larguraTela * 0.015).clamp(18.0, 22.0)),
+      ),
       content: isLoadingAnterior
           ? const SizedBox(
               height: 100,
