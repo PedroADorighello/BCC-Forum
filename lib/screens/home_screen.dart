@@ -168,7 +168,7 @@ class _HomeScreenState extends State<HomeScreen> {
             controller: scrollController2,
             thumbVisibility: true,
             thumbColor: Colors.grey[300],
-            thickness: 3.0,
+            thickness: larguraTela > 600 ? 0 : 3.0,
             child: ScrollConfiguration(
               behavior: ScrollConfiguration.of(
                 context,
