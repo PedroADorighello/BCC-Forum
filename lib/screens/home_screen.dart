@@ -196,8 +196,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       label: Text(categoria),
                       selected: _filtroCategoria == categoria,
                       onSelected: (selecionado) {
-                        if (selecionado)
+                        if (selecionado) {
                           setState(() => _filtroCategoria = categoria);
+                        }
                       },
                       selectedColor: Colors.blue[100],
                     ),
