@@ -15,7 +15,15 @@ class ListaComentariosDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('Comentários - $nomeMateria'),
+      title: Text(
+        'Comentários - $nomeMateria',
+        style: TextStyle(
+          fontSize: (MediaQuery.of(context).size.width * 0.015).clamp(
+            18.0,
+            22.0,
+          ),
+        ),
+      ),
       content: SizedBox(
         width: double.maxFinite,
         height: 400,
