@@ -23,7 +23,7 @@
     }
   },
   "hosting": {
-    "public": "bcc-forum",
+    "public": "build/web",
     "ignore": [
       "firebase.json",
       "**/.*",
