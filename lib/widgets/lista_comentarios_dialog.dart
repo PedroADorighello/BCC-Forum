@@ -47,8 +47,16 @@ class ListaComentariosDialog extends StatelessWidget {
             }).toList();
 
             if (comentarios.isEmpty) {
-              return const Center(
-                child: Text('Nenhum comentário ainda. Seja o primeiro!'),
+              return Center(
+                child: Text(
+                  'Nenhum comentário ainda. Seja o primeiro!',
+                  style: TextStyle(
+                    fontSize: (MediaQuery.of(context).size.width * 0.015).clamp(
+                      12.0,
+                      14.0,
+                    ),
+                  ),
+                ),
               );
             }
             double larguraTela = MediaQuery.of(context).size.width;
