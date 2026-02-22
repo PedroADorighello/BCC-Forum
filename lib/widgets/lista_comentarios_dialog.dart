@@ -43,7 +43,7 @@ class ListaComentariosDialog extends StatelessWidget {
                 child: Text('Nenhum comentário ainda. Seja o primeiro!'),
               );
             }
-
+            double larguraTela = MediaQuery.of(context).size.width;
             return ListView.separated(
               itemCount: comentarios.length,
               separatorBuilder: (_, _) => const Divider(),
@@ -69,14 +69,20 @@ class ListaComentariosDialog extends StatelessWidget {
                                     color: Colors.redAccent,
                                   ),
                                   itemCount: 5,
-                                  itemSize: 14,
+                                  itemSize: (larguraTela * 0.012).clamp(
+                                    14.0,
+                                    16.0,
+                                  ),
                                   direction: Axis.horizontal,
                                 ),
                                 const SizedBox(width: 8),
-                                const Text(
+                                Text(
                                   'Dificuldade',
                                   style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: (larguraTela * 0.012).clamp(
+                                      12.0,
+                                      14.0,
+                                    ),
                                     color: Colors.grey,
                                   ),
                                 ),
@@ -93,14 +99,20 @@ class ListaComentariosDialog extends StatelessWidget {
                                     color: Colors.amber,
                                   ),
                                   itemCount: 5,
-                                  itemSize: 14,
+                                  itemSize: (larguraTela * 0.012).clamp(
+                                    14.0,
+                                    16.0,
+                                  ),
                                   direction: Axis.horizontal,
                                 ),
                                 const SizedBox(width: 8),
-                                const Text(
+                                Text(
                                   'Qualidade',
                                   style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: (larguraTela * 0.012).clamp(
+                                      12.0,
+                                      14.0,
+                                    ),
                                     color: Colors.grey,
                                   ),
                                 ),
@@ -122,8 +134,8 @@ class ListaComentariosDialog extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 8.0),
                     child: Text(
                       avaliacao['comentario'],
-                      style: const TextStyle(
-                        fontSize: 14,
+                      style: TextStyle(
+                        fontSize: (larguraTela * 0.012).clamp(14.0, 16.0),
                         color: Colors.black87,
                       ),
                     ),
