@@ -32,7 +32,6 @@ class _ListaComentariosDialogState extends State<ListaComentariosDialog> {
     double larguraTela = MediaQuery.of(context).size.width;
     Widget conteudoDialog;
 
-    // 1. O utilizador não está logado
     if (user == null) {
       conteudoDialog = Center(
         child: Text(
@@ -41,9 +40,7 @@ class _ListaComentariosDialogState extends State<ListaComentariosDialog> {
           style: TextStyle(fontSize: (larguraTela * 0.015).clamp(12.0, 16.0)),
         ),
       );
-    }
-    // 2. Está logado, mas o e-mail não foi verificado
-    else if (!user!.emailVerified) {
+    } else if (!user!.emailVerified) {
       conteudoDialog = Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -88,9 +85,7 @@ class _ListaComentariosDialogState extends State<ListaComentariosDialog> {
           ],
         ),
       );
-    }
-    // 3. Tudo certo! Passou nas duas validações, carrega os comentários
-    else {
+    } else {
       conteudoDialog = StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('materias')
@@ -238,7 +233,6 @@ class _ListaComentariosDialogState extends State<ListaComentariosDialog> {
       );
     }
 
-    // Retorna o Dialog final com o conteúdo dinâmico que definimos acima
     return AlertDialog(
       title: Text(
         'Comentários - ${widget.nomeMateria}',
