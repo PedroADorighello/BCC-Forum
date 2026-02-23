@@ -48,6 +48,7 @@ As **Regras de Segurança (Security Rules)** foram configuradas para bloquear ac
 O projeto conta com scripts em Python para administração do banco de dados:
 * ```sync_materias.py```: Lê o arquivo ```materias.txt``` contendo a grade curricular e sincroniza com o Firestore (cria novas e faz soft delete das antigas).
 * ```moderar_comentarios.py```: Varre as subcoleções globalmente buscando os últimos comentários para moderação rápida via terminal.
+* ```ranking_alunos.py```: Monta um ranking via terminal dos alunos que mais contribuíram com avaliações no fórum.
 
 (Nota: É necessário gerar uma Service Account Key no Firebase e salvá-la como ```firebase-key.json``` na pasta ```/admin``` para executar os scripts).
 
