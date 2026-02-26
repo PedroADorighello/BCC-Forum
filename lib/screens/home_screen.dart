@@ -579,14 +579,16 @@ class _HomeScreenState extends State<HomeScreen> {
     Materia materia,
   ) async {
     final user = FirebaseAuth.instance.currentUser;
+    final larguraTela = MediaQuery.of(context).size.width;
 
     if (user == null) {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
           title: const Text('Acesso Restrito'),
-          content: const Text(
-            'Precisa de iniciar sessão com um e-mail institucional para fazer uma avaliação.',
+          content: Text(
+            'Faça login com um email institucional para fazer uma avaliação.',
+            style: TextStyle(fontSize: (larguraTela * 0.015).clamp(12.0, 16.0)),
           ),
           actions: [
             TextButton(
