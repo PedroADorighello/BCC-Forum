@@ -166,69 +166,63 @@ class _HomeScreenState extends State<HomeScreen> {
 
           RawScrollbar(
             controller: scrollController2,
-            thumbVisibility: true,
-            thumbColor: Colors.grey[300],
-            thickness: larguraTela > 600 ? 0 : 3.0,
-            child: ScrollConfiguration(
-              behavior: ScrollConfiguration.of(
-                context,
-              ).copyWith(scrollbars: false),
-              child: SingleChildScrollView(
-                controller: scrollController2,
-                scrollDirection: Axis.horizontal,
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                        right: 16.0,
-                        bottom: larguraTela < 600 ? 4.0 : 0,
-                      ),
-                      child: FilterChip(
-                        label: const Text('Minhas Avaliações'),
-                        selected: _mostrarApenasMinhas,
-                        selectedColor: Colors.amber[200],
-                        checkmarkColor: Colors.black87,
-                        onSelected: (selecionado) {
-                          final user = FirebaseAuth.instance.currentUser;
-                          if (user == null) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text(
-                                  'Faça login para ver suas avaliações.',
-                                ),
-                                backgroundColor: Colors.redAccent,
-                              ),
-                            );
-                            return;
-                          }
-
-                          setState(() => _mostrarApenasMinhas = selecionado);
-                        },
-                      ),
+            thumbVisibility: false,
+            thickness: 0,
+            child: SingleChildScrollView(
+              controller: scrollController2,
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                      right: 16.0,
+                      // bottom: larguraTela < 600 ? 4.0 : 0,
                     ),
-                    ...['Todas', 'Obrigatória', 'Optativa 1', 'Optativa 2'].map(
-                      (categoria) {
-                        return Padding(
-                          padding: EdgeInsets.only(
-                            right: 8.0,
-                            bottom: larguraTela < 600 ? 4.0 : 0,
-                          ),
-                          child: ChoiceChip(
-                            label: Text(categoria),
-                            selected: _filtroCategoria == categoria,
-                            onSelected: (selecionado) {
-                              if (selecionado) {
-                                setState(() => _filtroCategoria = categoria);
-                              }
-                            },
-                            selectedColor: Colors.blue[100],
-                          ),
-                        );
+                    child: FilterChip(
+                      label: const Text('Minhas Avaliações'),
+                      selected: _mostrarApenasMinhas,
+                      selectedColor: Colors.amber[200],
+                      checkmarkColor: Colors.black87,
+                      onSelected: (selecionado) {
+                        final user = FirebaseAuth.instance.currentUser;
+                        if (user == null) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text(
+                                'Faça login para ver suas avaliações.',
+                              ),
+                              backgroundColor: Colors.redAccent,
+                            ),
+                          );
+                          return;
+                        }
+
+                        setState(() => _mostrarApenasMinhas = selecionado);
                       },
                     ),
-                  ],
-                ),
+                  ),
+                  ...['Todas', 'Obrigatória', 'Optativa 1', 'Optativa 2'].map((
+                    categoria,
+                  ) {
+                    return Padding(
+                      padding: EdgeInsets.only(
+                        right: categoria != 'Optativa 2' ? 8.0 : 0.0,
+                        // bottom: larguraTela < 600 ? 4.0 : 0,
+                      ),
+                      child: ChoiceChip(
+                        label: Text(categoria),
+                        selected: _filtroCategoria == categoria,
+                        onSelected: (selecionado) {
+                          if (selecionado) {
+                            setState(() => _filtroCategoria = categoria);
+                          }
+                        },
+                        selectedColor: Colors.blue[100],
+                      ),
+                    );
+                  }),
+                ],
               ),
             ),
           ),
