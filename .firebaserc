@@ -7,6 +7,9 @@
       "hosting": {
         "forum": [
           "ufscarforum-bcc"
+        ],
+        "antigo": [
+          "forum-2f5bd"
         ]
       }
     }

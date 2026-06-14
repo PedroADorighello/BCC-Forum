@@ -22,19 +22,32 @@
       }
     }
   },
-  "hosting": {
-    "target": "forum",
-    "public": "build/web",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
-  }
+  "hosting": [
+    {
+      "target": "antigo",
+      "public": "build/web",
+      "redirects": [
+        {
+          "source": "/:path*",
+          "destination": "https://ufscarforum-bcc.web.app/:path",
+          "type": 301
+        }
+      ]
+    },
+    {
+      "target": "forum",
+      "public": "build/web",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
 }
