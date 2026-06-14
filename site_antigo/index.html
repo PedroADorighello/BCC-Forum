@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecionando Fórum BCC...</title>
+  <script>
+    // 1. Tenta desinstalar qualquer Service Worker preso na página atual
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        for(let registration of registrations) {
+          registration.unregister();
+        }
+      }).then(function() {
+        // 2. Faz o redirecionamento preservando o link (ex: /post/123)
+        window.location.replace("https://ufscarforum-bcc.web.app" + window.location.pathname);
+      });
+    } else {
+      // Se não tiver service worker, redireciona direto
+      window.location.replace("https://ufscarforum-bcc.web.app" + window.location.pathname);
+    }
+  </script>
+</head>
+<body>
+  <p>Redirecionando para o novo Fórum BCC... Se você não for redirecionado em 3 segundos, <a id="link-novo" href="https://ufscarforum-bcc.web.app">clique aqui</a>.</p>
+  <script>
+    document.getElementById('link-novo').href = "https://ufscarforum-bcc.web.app" + window.location.pathname;
+  </script>
+</body>
+</html>
