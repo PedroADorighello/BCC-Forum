@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "forum-2f5bd"
-  }
+  },
+  "targets": {
+    "forum-2f5bd": {
+      "hosting": {
+        "forum": [
+          "ufscarforum-bcc"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

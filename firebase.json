@@ -23,6 +23,7 @@
     }
   },
   "hosting": {
+    "target": "forum",
     "public": "build/web",
     "ignore": [
       "firebase.json",
